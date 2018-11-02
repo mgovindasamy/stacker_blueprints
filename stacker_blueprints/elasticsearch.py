@@ -154,7 +154,8 @@ class Domain(Blueprint):
         # support for passing empty values for these keys when this was
         # created.
         optional_keys = ["AdvancedOptions", "DomainName", "EBSOptions",
-                         "SnapshotOptions", "Tags"]
+                         "ElasticsearchClusterConfig", "SnapshotOptions",
+                         "Tags"]
 
         for key in optional_keys:
             optional = variables[key]
