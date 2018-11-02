@@ -20,11 +20,6 @@
                     "DomainEndpoint"
                 ]
             }
-        },
-        "SecurityGroup": {
-            "Value": {
-                "Ref": "ESSecurityGroup"
-            }
         }
     },
     "Resources": {
@@ -42,17 +37,6 @@
                 "EncryptionAtRestOptions": {
                     "Enabled": "true",
                     "KmsKeyId": "kms/key/alias/key1"
-                },
-                "VPCOptions": {
-                    "SecurityGroupIds": [
-                        {
-                            "Ref": "ESSecurityGroup"
-                        }
-                    ],
-                    "SubnetIds": [
-                        "subnet-0000aaaa",
-                        "subnet-0000bbbb"
-                    ]
                 }
             },
             "Type": "AWS::Elasticsearch::Domain"
@@ -113,19 +97,6 @@
                 "Type": "CNAME"
             },
             "Type": "AWS::Route53::RecordSet"
-        },
-        "ESLinkedRole": {
-            "Properties": {
-                "AWSServiceName": "es.amazonaws.com"
-            },
-            "Type": "AWS::IAM::ServiceLinkedRole"
-        },
-        "ESSecurityGroup": {
-            "Properties": {
-                "GroupDescription": "Security group for ElasticSearch",
-                "VpcId": "vpc-00001234"
-            },
-            "Type": "AWS::EC2::SecurityGroup"
         }
     }
 }

@@ -20,11 +20,6 @@
                     "DomainEndpoint"
                 ]
             }
-        },
-        "SecurityGroup": {
-            "Value": {
-                "Ref": "ESSecurityGroup"
-            }
         }
     },
     "Resources": {
@@ -45,9 +40,8 @@
                 },
                 "VPCOptions": {
                     "SecurityGroupIds": [
-                        {
-                            "Ref": "ESSecurityGroup"
-                        }
+                        "sg-aaaabbbb",
+                        "sg-aaaacccc"
                     ],
                     "SubnetIds": [
                         "subnet-0000aaaa",
@@ -119,13 +113,6 @@
                 "AWSServiceName": "es.amazonaws.com"
             },
             "Type": "AWS::IAM::ServiceLinkedRole"
-        },
-        "ESSecurityGroup": {
-            "Properties": {
-                "GroupDescription": "Security group for ElasticSearch",
-                "VpcId": "vpc-00001234"
-            },
-            "Type": "AWS::EC2::SecurityGroup"
         }
     }
 }
