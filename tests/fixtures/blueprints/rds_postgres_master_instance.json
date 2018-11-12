@@ -21,6 +21,7 @@
     }, 
     "Parameters": {
         "MasterUserPassword": {
+            "Default": "", 
             "Description": "Master user password.", 
             "NoEcho": true, 
             "Type": "String"

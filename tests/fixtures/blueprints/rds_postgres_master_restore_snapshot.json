@@ -21,6 +21,7 @@
     }, 
     "Parameters": {
         "MasterUserPassword": {
+            "Default": "", 
             "Description": "Master user password.", 
             "NoEcho": true, 
             "Type": "String"
@@ -54,7 +55,9 @@
                 "BackupRetentionPeriod": 7, 
                 "DBInstanceClass": "db.m3.large", 
                 "DBInstanceIdentifier": "db-id", 
-                "DBName": "db", 
+                "DBName": {
+                    "Ref": "AWS::NoValue"
+                }, 
                 "DBParameterGroupName": {
                     "Ref": "ParameterGroup"
                 }, 
@@ -68,9 +71,11 @@
                     "Ref": "AWS::NoValue"
                 }, 
                 "MasterUserPassword": {
-                    "Ref": "MasterUserPassword"
+                    "Ref": "AWS::NoValue"
                 }, 
-                "MasterUsername": "root", 
+                "MasterUsername": {
+                    "Ref": "AWS::NoValue"
+                }, 
                 "MultiAZ": "true", 
                 "OptionGroupName": {
                     "Ref": "OptionGroup"
