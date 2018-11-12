@@ -357,6 +357,14 @@ class AuroraCluster(Cluster):
         return 3306
 
 
+class AuroraMysqlCluster(Cluster):
+    def engine(self):
+        return "aurora-mysql"
+
+    def port(self):
+        return 3306
+
+
 class AuroraPGCluster(Cluster):
     def engine(self):
         return "aurora-postgresql"

@@ -24,3 +24,13 @@ stacks:
       MasterUserPassword: unused-password
       DatabaseName: db
       SnapshotIdentifier: arn:aws:rds:us-east-1:0123456788901:cluster-snapshot:rds:my-snapshot
+  - name: rds_aurora_mysql_cluster
+    class_path: stacker_blueprints.rds.aurora.AuroraMysqlCluster
+    variables:
+      DBFamily: aurora-mysql5.7
+      EngineVersion: 5.7.12
+      Subnets: subnet-1234,subnet-4321
+      VpcId: vpc-1234
+      MasterUser: root
+      MasterUserPassword: password
+      DatabaseName: db
