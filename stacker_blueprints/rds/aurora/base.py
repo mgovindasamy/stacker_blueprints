@@ -252,7 +252,6 @@ class Cluster(Blueprint):
 
     @property
     def cluster(self):
-        t = self.template
         variables = self.get_variables()
         parameter_group = NoValue
         if variables["ClusterParameters"]:
