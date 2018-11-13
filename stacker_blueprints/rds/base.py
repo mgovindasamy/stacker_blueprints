@@ -410,17 +410,34 @@ class MasterInstance(BaseRDS):
     @property
     def master_username(self):
         variables = self.get_variables()
+
         if self.is_snapshot_restore:
+            if variables["MasterUser"]:
+                raise TypeError("MasterUser should be empty when restoring "
+                                "from a snapshot.")
             return NoValue
-        return variables.get("MasterUser")
+
+        if not variables["MasterUser"]:
+            raise TypeError("MasterUser should only be empty when restoring"
+                            "from a snapshot.")
+
+        return variables["MasterUser"]
 
     @property
     def master_user_password(self):
         variables = self.get_variables()
+
         if self.is_snapshot_restore:
+            if variables["MasterUserPassword"].value:
+                raise TypeError("MasterUserPassword should be empty when "
+                                "restoring from a snapshot.")
             return NoValue
-        v = variables.get("MasterUserPassword")
-        return v.ref
+
+        if not variables["MasterUserPassword"].value:
+            raise TypeError("MasterUserPassword should only be empty when "
+                            "restoring from a snapshot.")
+
+        return variables["MasterUserPassword"].ref
 
     @property
     def database_name(self):
